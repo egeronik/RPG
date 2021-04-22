@@ -33,7 +33,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
+        if(hit.collider!=null)
+        Debug.Log(hit.collider.name);
         GetMovementDirection();
 
 
@@ -111,6 +113,13 @@ public class PlayerMovement : MonoBehaviour
         }
         
 
+    }
+
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Debug.Log(collision);
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
