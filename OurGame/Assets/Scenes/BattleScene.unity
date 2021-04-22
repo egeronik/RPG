@@ -897,7 +897,9 @@ MonoBehaviour:
   - {fileID: 1471383389}
   - {fileID: 1471383391}
   Target: {fileID: 0}
-  TeamTarget: {fileID: 0}
+  TeamTarget:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1471383387
 Transform:
   m_ObjectHideFlags: 0
