@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341c16879efe73c4abd1d19f942d84fb, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: 
-  name: 
+  name: Heal
   description: 
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300062, guid: f2ed27d6c1c3ccc48959bcca269d88f0, type: 3}

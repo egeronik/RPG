@@ -26,7 +26,7 @@ public class Heal : Skills
             T = GetComponent<GameMaster>().Target;
             TeamT = GetComponent<GameMaster>().TeamTarget;
 
-            TeamT.GetComponent<Animator>().SetTrigger("Attack1");
+            TeamT.GetComponent<Animator>().SetTrigger("Heal");
             T.GetComponent<Vrag>().TakeDamage(Damage);
 
             Status = false;
