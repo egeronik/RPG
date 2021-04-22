@@ -13,8 +13,6 @@ public class SkillHUD : MonoBehaviour {
     public Text Name;
 
     void Start() {
-        //Name.text = Stats.name;
-        //description.text = Stats.description;
         art.sprite = Stats.artwork;
     }
 

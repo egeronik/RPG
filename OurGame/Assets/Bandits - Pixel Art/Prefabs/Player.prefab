@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1451661748206210637}
   - component: {fileID: 1695028546988611891}
   - component: {fileID: 1562316967780169585}
+  - component: {fileID: 2567800240610355906}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -68,6 +69,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -129,6 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 1.2}
   m_EdgeRadius: 0
+--- !u!114 &2567800240610355906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545274940902452039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c03f7caba23ee4d9d97909371daaf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleSkills: 0000000001000000
 --- !u!1 &3876473099116094157
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +205,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -218,8 +234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stats: {fileID: 11400000, guid: ed8ad624a762e7d4dbe8e53214118e93, type: 2}
   art: {fileID: 3876473099116094144}
-  description: 
-  Name: 
+  description: {fileID: 0}
+  Name: {fileID: 0}
 --- !u!1 &3876473099736699599
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +319,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
 --- !u!114 &3876473099736699597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,6 +398,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -409,5 +427,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stats: {fileID: 11400000, guid: 005fb03cb04afd74fae1a93fd529bf26, type: 2}
   art: {fileID: 6574426163889016331}
-  description: 
-  Name: 
+  description: {fileID: 0}
+  Name: {fileID: 0}

@@ -8,7 +8,7 @@ public class MouseTrack : MonoBehaviour
     public GameObject chelic;
     void Update()
     {
-            CastRay();
+        CastRay();
     }
     void CastRay() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

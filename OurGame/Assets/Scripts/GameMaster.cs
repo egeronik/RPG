@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameMaster : MonoBehaviour {
     public int SkillID = 0;
     public List<Skills> Skills;
-    private bool Cast = false;
+    int[] possibleSkillID;
+    private bool CastAttack = false;
+    private bool CastSupport = false;
 
     public GameObject Target, TeamTarget;
     private GameObject tmpTarget, tmpTeamTarget;
@@ -26,23 +28,48 @@ public class GameMaster : MonoBehaviour {
             tmpTeamTarget = TeamTarget.transform.Find("Skills").gameObject;
         }
 
-
         if (Input.GetKeyDown(KeyCode.H)) {
             SkillID = 0;
-            Cast = true;
+            CastAttack = true;
         }
         if (Input.GetKeyDown(KeyCode.J)) {
             SkillID = 1;
-            Cast = true;
+            CastAttack = true;
         }
-
-        if (Cast) {
+        if (Input.GetKeyDown(KeyCode.K)) {
+            SkillID = 2;
+            CastSupport = true;
+        }
+        if (CastAttack) {
+            possibleSkillID = TeamTarget.GetComponent<PossibleSkillsID>().possibleSkills;
             if (Target != null && Target.tag == "Vrag") {
-                Skills[SkillID].Activate();
-                Cast = false;
+                for (int i = 0; i < possibleSkillID.Length; i++) {
+                    if (SkillID == possibleSkillID[i]) {
+                        Skills[SkillID].Activate();
+                        CastAttack = false;
+                        break;
+                    }
+                }
+                CastAttack = false;
             }
         } else {
-            Cast = false;
+            CastAttack = false;
+        }
+
+        if (CastSupport) {
+            possibleSkillID = TeamTarget.GetComponent<PossibleSkillsID>().possibleSkills;
+            if (Target != null && Target.tag == "Player") {
+                for (int i = 0; i < possibleSkillID.Length; i++) {
+                    if (SkillID == possibleSkillID[i]) {
+                        Skills[SkillID].Activate();
+                        CastSupport = false;
+                        break;
+                    }
+                }
+                CastSupport = false;
+            }
+        } else {
+            CastSupport = false;
         }
     }
 }
