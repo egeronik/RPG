@@ -10,16 +10,12 @@ public class PlayerMovement : MonoBehaviour
     public Tilemap wrld;
     public Tilemap HighlitionMap;
     public TileBase Higlition;
-
-
-
-    private Vector2 movementInput;
+    public GameObject dialogWindow;
+    public float fightChance;
 
     private Vector3 direction;
-
-
     bool hasMoved;
-
+    
     public float X;
     public float Y;
 
@@ -28,14 +24,22 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-       
+        Vector3 tmp = new Vector3(PlayerPrefs.GetFloat("x"), PlayerPrefs.GetFloat("y"));
+        transform.position = tmp;
     }
 
     void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
-        if(hit.collider!=null)
-        Debug.Log(hit.collider.name);
+        if (hit.collider != null)
+            PlayerPrefs.SetString("Biome", hit.collider.name);
+        
+        if (StateDataController.dialogWindowAlive)
+        {
+            HighlitionMap.SetTile(next, null);
+            return;
+        }
+
         GetMovementDirection();
 
 
@@ -48,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-
+        
         if (Input.GetButtonUp("Fire1"))
         {
             hasMoved = false;
@@ -57,10 +61,13 @@ public class PlayerMovement : MonoBehaviour
         {
             hasMoved = true;
             transform.position += direction;
-            
-           // Vector3Int currentTile = wrld.WorldToCell(transform.position);
-            //Debug.Log(wrld.GetTile(currentTile).ToString());
-            //Debug.Log(currentTile);
+            PlayerPrefs.SetFloat("x", transform.position.x);
+            PlayerPrefs.SetFloat("y", transform.position.y);
+            if (Random.Range(0, 100) < fightChance)
+            {
+                dialogWindow.SetActive(true);
+                StateDataController.dialogWindowAlive = true;
+            }
 
         }
 
