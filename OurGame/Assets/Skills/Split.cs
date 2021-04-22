@@ -24,7 +24,7 @@ public class Split : Skills
         if (Status)
         {
             T = GetComponent<GameMaster>().Target;
-            TeamT = GetComponent<GameMaster>().TeamTarget;
+            TeamT = GetComponent<GameMaster>().TeamTarget[0];
 
             TeamT.GetComponent<Animator>().SetTrigger("Attack1");
             T.GetComponent<Vrag>().TakeDamage(Damage);

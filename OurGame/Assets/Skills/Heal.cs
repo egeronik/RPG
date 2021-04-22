@@ -23,8 +23,8 @@ public class Heal : Skills
     {
         if (Status)
         {
-            T = GetComponent<GameMaster>().Target;
-            TeamT = GetComponent<GameMaster>().TeamTarget;
+            T = GetComponent<GameMaster>().TeamTarget[1];
+            TeamT = GetComponent<GameMaster>().TeamTarget[0];
 
             TeamT.GetComponent<Animator>().SetTrigger("Heal");
             T.GetComponent<Vrag>().TakeDamage(Damage);

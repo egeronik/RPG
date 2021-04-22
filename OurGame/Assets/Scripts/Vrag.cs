@@ -10,7 +10,6 @@ public class Vrag : MonoBehaviour
     public int currentHealth;
 
     public HealthBar healthBar;
-    // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
@@ -18,19 +17,15 @@ public class Vrag : MonoBehaviour
     }
 
     public void TakeDamage (int damage) {
-
         if (died) { 
-            Debug.Log("Нахуя ты пиздишь говно?"); 
             return;
         }
 
         currentHealth -= damage;
         if (damage < 40) {
             StartCoroutine(Hurt1());
-            Debug.Log("Ебнул");
         } else {
             StartCoroutine(Hurt2());
-            Debug.Log("Сильно ебнул");
         }
         if (currentHealth <= 0) {
             Die();
@@ -40,17 +35,16 @@ public class Vrag : MonoBehaviour
     IEnumerator Hurt1() {
         yield return new WaitForSeconds(0.45f);
         healthBar.SetHealt(currentHealth);
-        animator.SetTrigger("Hurt");
+        animator.SetTrigger("HurtEnemy");
     }
 
     IEnumerator Hurt2() {
         yield return new WaitForSeconds(0.9f);
         healthBar.SetHealt(currentHealth);
-        animator.SetTrigger("Hurt");
+        animator.SetTrigger("HurtEnemy");
     }
 
     void Die() {
-        Debug.Log("Чел в говне");
         animator.SetBool("IsDead", true);
         this.enabled = false;
         died = true;
