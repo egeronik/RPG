@@ -9,10 +9,13 @@ public class GameMaster : MonoBehaviour {
     private bool turn = true;
     private bool CastAttack = false;
     private bool CastSupport = false;
-    int k = 0;
+    int k = 0, v = 0;
+    int EnemyesCount;
+    public GameObject[] Enemy, Team;
     public GameObject Target;
     public GameObject[] TeamTarget = new GameObject [2];
     private GameObject tmpTarget, tmpTeamTarget;
+
 
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
@@ -56,7 +59,7 @@ public class GameMaster : MonoBehaviour {
                     if (SkillID == possibleSkillID[i]) {
                         Skills[SkillID].Activate();
                         CastAttack = false;
-                        //turn = false;
+                        turn = false;
                         break;
                     }
                 }
@@ -73,6 +76,7 @@ public class GameMaster : MonoBehaviour {
                     if (SkillID == possibleSkillID[i]) {
                         Skills[SkillID].Activate();
                         CastSupport = false;
+                        turn = false;
                         break;
                     }
                 }
@@ -82,15 +86,18 @@ public class GameMaster : MonoBehaviour {
             CastSupport = false;
         }
 
-       /* if (!turn) {
-            possibleSkillID = Target.GetComponent<PossibleSkillsID>().possibleSkills;
-            if (TeamTarget != null && TeamTarget[1].tag == "Player") {
-                
-                Skills[SkillID].Activate();
-                CastSupport = false;
-                turn = false;
-                }           
-            }*/
+       if (!turn) {
+            EnemyesCount = GetComponent<Spawn>().EnemyesOnSide;
+            Enemy = GetComponent<Spawn>().Enemy;
+            Team = GetComponent<Spawn>().Team;
+            TeamTarget[0] = GetComponent<Spawn>().Enemy[v % EnemyesCount];
+            possibleSkillID = TeamTarget[0].GetComponent<PossibleSkillsID>().possibleSkills;
+            Target = GetComponent<Spawn>().Team[Random.Range(0, 4)];
+            SkillID = possibleSkillID[Random.Range(0, possibleSkillID.Length)];
+            Skills[SkillID].Activate();
+            v++;
+            turn = true;     
+       }
     }
 }
 

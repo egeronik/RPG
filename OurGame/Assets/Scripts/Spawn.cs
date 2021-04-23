@@ -5,28 +5,28 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public const int PersonsOnSide = 4;
-    public GameObject[] Team = new GameObject[PersonsOnSide];
-    public GameObject[] Enemy = new GameObject[PersonsOnSide];
-    public GameObject[] SpawnTeam = new GameObject[PersonsOnSide];
-    public GameObject[] SpawnEnemy = new GameObject[PersonsOnSide];
-    bool[] EnemiesUsed = new bool[PersonsOnSide];
-    bool[] AlliesUsed = new bool [PersonsOnSide];
+    public int EnemyesOnSide = 4;
+    public GameObject[] Team = new GameObject[4];
+    public GameObject[] Enemy = new GameObject[4];
+    public GameObject[] SpawnTeam = new GameObject[4];
+    public GameObject[] SpawnEnemy = new GameObject[4];
+    bool[] EnemiesUsed = new bool[4];
+    bool[] AlliesUsed = new bool [4];
 
     void Start() {
         int value;
         for (int i = 0; i < Team.Length; i++) {
-            value = Random.Range(0, PersonsOnSide);
+            value = Random.Range(0, 4);
             while (AlliesUsed[value]) {
-                value = Random.Range(0, PersonsOnSide);
+                value = Random.Range(0, 4);
             }
             Instantiate(Team[i], SpawnTeam[value].transform.position, SpawnTeam[value].transform.rotation);
             AlliesUsed[value] = true;
         }
         for (int i = 0; i < Enemy.Length; i++) {
-            value = Random.Range(0, PersonsOnSide);
+            value = Random.Range(0, EnemyesOnSide);
             while (EnemiesUsed[value]) {
-                value = Random.Range(0, PersonsOnSide);
+                value = Random.Range(0, EnemyesOnSide);
             }
             Instantiate(Enemy[i], SpawnEnemy[value].transform.position, SpawnEnemy[value].transform.rotation);
             EnemiesUsed[value] = true;
