@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameMaster : MonoBehaviour {
-    public int SkillID = 0;
+    private int SkillID = 0;
     public List<Skills> Skills;
     int[] possibleSkillID;
     private bool turn = true;
@@ -90,9 +90,9 @@ public class GameMaster : MonoBehaviour {
             EnemyesCount = GetComponent<Spawn>().EnemyesOnSide;
             Enemy = GetComponent<Spawn>().Enemy;
             Team = GetComponent<Spawn>().Team;
-            TeamTarget[0] = GetComponent<Spawn>().Enemy[v % EnemyesCount];
+            TeamTarget[0] = Enemy[v % EnemyesCount];
             possibleSkillID = TeamTarget[0].GetComponent<PossibleSkillsID>().possibleSkills;
-            Target = GetComponent<Spawn>().Team[Random.Range(0, 4)];
+            Target = Team[Random.Range(0, 4)];
             SkillID = possibleSkillID[Random.Range(0, possibleSkillID.Length)];
             Skills[SkillID].Activate();
             v++;

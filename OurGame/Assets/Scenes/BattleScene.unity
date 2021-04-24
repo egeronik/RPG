@@ -891,11 +891,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4caa97a1bdb53b64e8a6b6b98adf900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkillID: 0
   Skills:
   - {fileID: 1471383390}
   - {fileID: 1471383389}
   - {fileID: 1471383391}
+  Enemy: []
+  Team: []
   Target: {fileID: 0}
   TeamTarget:
   - {fileID: 0}
@@ -1001,6 +1002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b16f1caed9681c439ad71cc9771a8fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyesOnSide: 4
   Team:
   - {fileID: 1545274940902452039, guid: 0ab171f912045964280e983ab467e1ed, type: 3}
   - {fileID: 3425025573237175850, guid: 2b39681eaac93074bb7c639858bb181c, type: 3}

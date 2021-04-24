@@ -6,10 +6,10 @@ using UnityEngine;
 public class Spawn : MonoBehaviour
 {
     public int EnemyesOnSide = 4;
-    public GameObject[] Team = new GameObject[4];
-    public GameObject[] Enemy = new GameObject[4];
-    public GameObject[] SpawnTeam = new GameObject[4];
-    public GameObject[] SpawnEnemy = new GameObject[4];
+    public GameObject[] Team;
+    public GameObject[] Enemy;
+    public GameObject[] SpawnTeam;
+    public GameObject[] SpawnEnemy;
     bool[] EnemiesUsed = new bool[4];
     bool[] AlliesUsed = new bool [4];
 
