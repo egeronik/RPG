@@ -84,15 +84,15 @@ public class PlayerMovement : MonoBehaviour
 
       //  transform.position = mouse;
       
-        if (mouse.x < 0)
+        if (mouse.x *32/100 < 0)
         {
-            if (mouse.y > 1f)
+            if (mouse.y > 1f*23/100)
             {
-                direction = new Vector3(-X/2, Y/2);
+                direction = new Vector3(-X, Y);
             }
-            else if (mouse.y < -1f)
+            else if (mouse.y < -1f * 23 / 100)
             {
-                direction = new Vector3(-X/2, -Y/2);
+                direction = new Vector3(-X, -Y);
             }
             else
             {
@@ -100,15 +100,15 @@ public class PlayerMovement : MonoBehaviour
             }
             
         }
-        else if (mouse.x > 0)
+        else if (mouse.x *32/100 > 0)
         {
-            if (mouse.y > 1f)
+            if (mouse.y > 1f*23/100)
             {
-                direction = new Vector3(X/2, Y/2);
+                direction = new Vector3(X , Y);
             }
-            else if (mouse.y < -1f)
+            else if (mouse.y < -1f * 23 / 100)
             {
-                direction = new Vector3(X/2, -Y/2);
+                direction = new Vector3(X , -Y);
             }
             else
             {
