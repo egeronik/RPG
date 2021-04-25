@@ -20,7 +20,7 @@ public class Spawn : MonoBehaviour
             while (AlliesUsed[value]) {
                 value = Random.Range(0, 4);
             }
-            Instantiate(Team[i], SpawnTeam[value].transform.position, SpawnTeam[value].transform.rotation);
+            Team[i] = Instantiate(Team[i], SpawnTeam[value].transform.position, SpawnTeam[value].transform.rotation);
             AlliesUsed[value] = true;
         }
         for (int i = 0; i < Enemy.Length; i++) {
@@ -28,7 +28,7 @@ public class Spawn : MonoBehaviour
             while (EnemiesUsed[value]) {
                 value = Random.Range(0, EnemyesOnSide);
             }
-            Instantiate(Enemy[i], SpawnEnemy[value].transform.position, SpawnEnemy[value].transform.rotation);
+            Enemy[i] = Instantiate(Enemy[i], SpawnEnemy[value].transform.position, SpawnEnemy[value].transform.rotation);
             EnemiesUsed[value] = true;
         }
     }

@@ -10,13 +10,15 @@ public class GameMaster : MonoBehaviour {
     private bool CastAttack = false;
     private bool CastSupport = false;
     int k = 0, v = 0;
-    int EnemyesCount;
-    public GameObject[] Enemy, Team;
+    public GameObject[] EnemyParty, TeamParty;
     public GameObject Target;
     public GameObject[] TeamTarget = new GameObject [2];
     private GameObject tmpTarget, tmpTeamTarget;
-
-
+    public Spawn spawnObject;
+    int EnemyesCount;
+    void Start() {
+        EnemyesCount = spawnObject.EnemyesOnSide;
+    }
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
             Target = GetComponent<MouseTrack>().chelic;
@@ -57,18 +59,21 @@ public class GameMaster : MonoBehaviour {
             if (Target != null && Target.tag == "Vrag") {
                 for (int i = 0; i < possibleSkillID.Length; i++) {
                     if (SkillID == possibleSkillID[i]) {
-                        Skills[SkillID].Activate();
+                        Skills[SkillID].Activate();                      
                         CastAttack = false;
                         turn = false;
                         break;
                     }
                 }
-                CastAttack = false;
-            }
+                CastAttack = false;             
+            }       
         } else {
             CastAttack = false;
         }
-
+       /* if (Target != null && Target.GetComponent<Vrag>().died) {
+            Destroy(Target);
+            EnemyesCount--;
+        }*/
         if (CastSupport) {
             possibleSkillID = TeamTarget[0].GetComponent<PossibleSkillsID>().possibleSkills;
             if (Target != null && Target.tag == "Player") {
@@ -87,17 +92,22 @@ public class GameMaster : MonoBehaviour {
         }
 
        if (!turn) {
-            EnemyesCount = GetComponent<Spawn>().EnemyesOnSide;
-            Enemy = GetComponent<Spawn>().Enemy;
-            Team = GetComponent<Spawn>().Team;
-            TeamTarget[0] = Enemy[v % EnemyesCount];
-            possibleSkillID = TeamTarget[0].GetComponent<PossibleSkillsID>().possibleSkills;
-            Target = Team[Random.Range(0, 4)];
-            SkillID = possibleSkillID[Random.Range(0, possibleSkillID.Length)];
-            Skills[SkillID].Activate();
-            v++;
-            turn = true;     
-       }
+            StartCoroutine(EnemyTurn());
+            turn = true;
+        }
+    }
+
+    IEnumerator EnemyTurn() {
+        yield return new WaitForSeconds(1f);
+        Debug.Log("Gay");
+        EnemyParty = spawnObject.Enemy;
+        TeamParty = spawnObject.Team;
+        TeamTarget[0] = EnemyParty[v % EnemyesCount];
+        possibleSkillID = TeamTarget[0].GetComponent<PossibleSkillsID>().possibleSkills;
+        Target = TeamParty[Random.Range(0, 4)];
+        SkillID = possibleSkillID[Random.Range(0, possibleSkillID.Length)];
+        Skills[SkillID].Activate();
+        v++;
     }
 }
 

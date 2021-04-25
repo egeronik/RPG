@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vrag : MonoBehaviour
 {
-    bool died = false;
+    public bool died = false;
     public Animator animator;
     public int maxHealth = 100;
     public int currentHealth;
@@ -17,15 +17,17 @@ public class Vrag : MonoBehaviour
     }
 
     public void TakeDamage (int damage) {
-        if (died) { 
+        if (died) {
             return;
         }
 
         currentHealth -= damage;
-        if (damage < 40) {
+        if (damage > 0 && damage < 40) {
             StartCoroutine(Hurt1());
-        } else {
+        } else if(damage >=40) {
             StartCoroutine(Hurt2());
+        }else {
+            StartCoroutine(Heal());
         }
         if (currentHealth <= 0) {
             Die();
@@ -42,6 +44,12 @@ public class Vrag : MonoBehaviour
         yield return new WaitForSeconds(0.9f);
         healthBar.SetHealt(currentHealth);
         animator.SetTrigger("HurtEnemy");
+    }
+
+    IEnumerator Heal() {
+        yield return new WaitForSeconds(0.15f);
+        healthBar.SetHealt(currentHealth);
+        animator.SetTrigger("HealTeam");
     }
 
     void Die() {

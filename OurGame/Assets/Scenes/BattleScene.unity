@@ -895,12 +895,13 @@ MonoBehaviour:
   - {fileID: 1471383390}
   - {fileID: 1471383389}
   - {fileID: 1471383391}
-  Enemy: []
-  Team: []
+  EnemyParty: []
+  TeamParty: []
   Target: {fileID: 0}
   TeamTarget:
   - {fileID: 0}
   - {fileID: 0}
+  spawnObject: {fileID: 1598597382}
 --- !u!4 &1471383387
 Transform:
   m_ObjectHideFlags: 0
@@ -984,7 +985,7 @@ GameObject:
   - component: {fileID: 1598597383}
   - component: {fileID: 1598597382}
   m_Layer: 0
-  m_Name: Spawn
+  m_Name: Unity_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
