@@ -144,9 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865d1460c4743ab43b448da538323b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  died: 0
   animator: {fileID: 4267246470778357429}
   maxHealth: 100
   currentHealth: 0
+  Person: {fileID: 1900070274916832544}
   healthBar: {fileID: 2957791424120417630}
 --- !u!114 &-5001454180401706110
 MonoBehaviour:

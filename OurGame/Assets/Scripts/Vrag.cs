@@ -6,9 +6,9 @@ public class Vrag : MonoBehaviour
 {
     public bool died = false;
     public Animator animator;
-    public int maxHealth = 100;
+    public int maxHealth;
     public int currentHealth;
-
+    public GameObject Person;
     public HealthBar healthBar;
     void Start()
     {
@@ -54,8 +54,8 @@ public class Vrag : MonoBehaviour
 
     void Die() {
         animator.SetBool("IsDead", true);
-        this.enabled = false;
         died = true;
+        if (Person.tag == "Vrag") PlayerPrefs.SetInt("enemiesAlive", PlayerPrefs.GetInt("enemiesAlive") - 1);
+        else PlayerPrefs.SetInt("teamAlive", PlayerPrefs.GetInt("teamAlive") - 1);
     }
-
 }
