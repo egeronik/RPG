@@ -17,7 +17,6 @@ public class Spawn : MonoBehaviour
     string Biome;
     void Start() {
         Biome = StateDataController.Biome;
-        Debug.Log(Biome);
         PlayerPrefs.SetInt("enemiesAlive", 0);
         PlayerPrefs.SetInt("teamAlive", 0);
         int value;
@@ -30,9 +29,23 @@ public class Spawn : MonoBehaviour
             Vector3 vec = SpawnTeam[value].transform.position;
             vec.y += Team[i].GetComponent<BoxCollider2D>().size.y / 2;
             Team[i] = Instantiate(Team[i], vec, SpawnTeam[value].transform.rotation);
+            
             PlayerPrefs.SetInt("teamAlive", PlayerPrefs.GetInt("teamAlive") + 1);
             AlliesUsed[value] = true;
         }
+
+        for (int i = 0; i < 4; i++)
+        {
+            //Debug.Log(Team[i].GetComponent<Vrag>().currentHealth);
+            if (!StateDataController.teamHealthIsFull)
+            {
+                Team[i].GetComponent<Vrag>().currentHealth = StateDataController.teamHp[i];
+                Team[i].GetComponent<Vrag>().healthBar.SetHealt(StateDataController.teamHp[i]);
+                StateDataController.teamMaxHp[i] = Team[i].GetComponent<Vrag>().maxHealth;
+                //Debug.Log(Team[i].GetComponent<Vrag>().currentHealth);
+            }
+        }
+
 
         if (Biome == "Forest") {
             for (int i = 0; i < EnemyesOnSide; i++) {
@@ -55,5 +68,12 @@ public class Spawn : MonoBehaviour
             PlayerPrefs.SetInt("enemiesAlive", PlayerPrefs.GetInt("enemiesAlive") + 1);
             EnemiesUsed[value] = true;
         }
+        
     }
+
+    private void Awake()
+    {
+        
+    }
+
 }
