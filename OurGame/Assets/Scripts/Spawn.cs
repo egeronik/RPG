@@ -37,9 +37,7 @@ public class Spawn : MonoBehaviour
             for (int i = 0; i < EnemyesOnSide; i++) {
                 Enemy[i] = EnemyForest[Random.Range(0, 4)];
             }
-        }
-
-        if (Biome == "Desert") {
+        } else if (Biome == "Desert") {
             for (int i = 0; i < EnemyesOnSide; i++) {
                 Enemy[i] = EnemyDesert[Random.Range(0, 4)];
             }

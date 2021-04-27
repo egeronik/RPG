@@ -976,10 +976,10 @@ GameObject:
   - component: {fileID: 1471383389}
   - component: {fileID: 1471383391}
   - component: {fileID: 1471383392}
-  - component: {fileID: 1471383393}
   - component: {fileID: 1471383394}
   - component: {fileID: 1471383395}
   - component: {fileID: 1471383396}
+  - component: {fileID: 1471383393}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1111,12 +1111,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1471383385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68a0d09ad83ec554690130fcf322420d, type: 3}
+  m_Script: {fileID: 11500000, guid: 35b727bbef1b68243b2c6040194faf40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Status: 0
   Damage: 25
-  _stats: {fileID: 11400000, guid: e1e42b4bb115df448a51aeccfa9bc628, type: 2}
+  _stats: {fileID: 11400000, guid: 7f943f6e49c8bba4aa8b855f30801241, type: 2}
 --- !u!114 &1471383394
 MonoBehaviour:
   m_ObjectHideFlags: 0
