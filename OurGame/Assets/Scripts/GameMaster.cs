@@ -14,7 +14,7 @@ public class GameMaster : MonoBehaviour {
     public GameObject[] EnemyParty, TeamParty;
     public GameObject Target;
     public GameObject[] TeamTarget = new GameObject [2];
-    private GameObject tmpTarget, tmpTeamTarget;
+    private GameObject tmpTarget, tmpTeamTarget, arrowTarget, arrowTeamTarget1, arrowTeamTarget2, redArrowTarget;
     public Spawn spawnObject;
     int EnemyesCount;
     bool End = true;
@@ -49,22 +49,40 @@ public class GameMaster : MonoBehaviour {
         }
         if (Target != null && k == 0 && Target.tag == "Player" && Input.GetMouseButtonDown(0) && !Target.GetComponent<Vrag>().died) {
             k++;
+            if (redArrowTarget != null) redArrowTarget.SetActive(false);
+           
             tmpTarget = Target.transform.Find("Skills").gameObject;
+            arrowTarget = Target.transform.Find("Arrow").gameObject;
             if (Target != TeamTarget[0]) {
                 tmpTarget.SetActive(!tmpTarget.activeSelf);
+                arrowTarget.SetActive(!arrowTarget.activeSelf);
             }
-            if (tmpTeamTarget!= null && TeamTarget[0] != null && TeamTarget[0].gameObject != Target.gameObject) {
+            if (tmpTeamTarget != null && TeamTarget[0] != null && TeamTarget[0].gameObject != Target.gameObject) {
                 tmpTeamTarget.SetActive(!tmpTeamTarget.activeSelf);
+                arrowTeamTarget1.SetActive(!arrowTeamTarget1.activeSelf);
+            }
+            if (TeamTarget[0] != TeamTarget[1] && TeamTarget[1] != null) {
+                arrowTeamTarget2.SetActive(!arrowTeamTarget2.activeSelf);
             }
             TeamTarget[0] = Target;
+            arrowTeamTarget1 = TeamTarget[0].transform.Find("Arrow").gameObject;
             tmpTeamTarget = TeamTarget[0].transform.Find("Skills").gameObject;
         } else if (Target != null && k == 1 && Target.tag == "Player" && Input.GetMouseButtonDown(0)) {
-            TeamTarget[1] = Target;
+            if (redArrowTarget != null) redArrowTarget.SetActive(false);
+            if (TeamTarget[0] != Target) {
+                TeamTarget[1] = Target;
+                arrowTeamTarget2 = TeamTarget[1].transform.Find("Arrow").gameObject;
+                arrowTeamTarget2.SetActive(!arrowTeamTarget2.activeSelf);
+            }
             k--;
-        } else if (Target != null && k == 1 && Input.GetMouseButtonDown(0)) {
+        } else if (Target != null && k == 1 && Target.tag == "Vrag" && Input.GetMouseButtonDown(0)) {
+            if (redArrowTarget != null) redArrowTarget.SetActive(false);
+            if (arrowTeamTarget2 != null) arrowTeamTarget2.SetActive(false);
+            redArrowTarget = Target.transform.Find("Arrow").gameObject;
+            redArrowTarget.SetActive(!redArrowTarget.activeSelf);
             k--;
-        }       
-        if (Target != null && turn && PlayerPrefs.GetInt("teamAlive") > 0) {
+        }
+        if (Target != null && turn && PlayerPrefs.GetInt("teamAlive") > 0) {       
             if (Input.GetKeyDown(KeyCode.H)) {
                 SkillID = 0;
                 CastAttack = true;
@@ -97,6 +115,8 @@ public class GameMaster : MonoBehaviour {
                             Debug.Log("У деда инсульт");
                             spawnObject.Team[3].GetComponent<Vrag>().TakeDamage(999);
                         }
+                        redArrowTarget = Target.transform.Find("Arrow").gameObject;
+                        redArrowTarget.SetActive(!redArrowTarget.activeSelf);
                         return;
                     }
                 }
@@ -112,8 +132,12 @@ public class GameMaster : MonoBehaviour {
                         Skills[SkillID].Activate();
                         CastSupport = false;
                         turn = false;
+                        if (tmpTeamTarget != null && TeamTarget[0] != null && TeamTarget[0].gameObject != TeamTarget[1].gameObject) {
+                            arrowTeamTarget2.SetActive(!arrowTeamTarget2.activeSelf);
+                        }
                         if (tmpTeamTarget != null && TeamTarget[0] != null && TeamTarget[0].gameObject == TeamTarget[1].gameObject) {
                             tmpTeamTarget.SetActive(!tmpTeamTarget.activeSelf);
+                            arrowTeamTarget1.SetActive(!arrowTeamTarget1.activeSelf);
                         }
                         if (Random.Range(0, 101) > 95) {
                             Debug.Log("У деда инсульт");
@@ -129,9 +153,18 @@ public class GameMaster : MonoBehaviour {
         }
 
        if (!turn) {
-            if(TeamTarget[0] != null) tmpTeamTarget = TeamTarget[0].transform.Find("Skills").gameObject;
-            if(TeamTarget[0].gameObject != Target.gameObject) tmpTeamTarget.SetActive(!tmpTeamTarget.activeSelf);
+            if (TeamTarget[0] != null) {
+                arrowTeamTarget1 = TeamTarget[0].transform.Find("Arrow").gameObject;
+                tmpTeamTarget = TeamTarget[0].transform.Find("Skills").gameObject;
+            }
+            if (TeamTarget[0].gameObject != Target.gameObject) {
+                tmpTeamTarget.SetActive(!tmpTeamTarget.activeSelf);
+                arrowTeamTarget1.SetActive(!arrowTeamTarget1.activeSelf);
+            }
+            redArrowTarget = null;
             tmpTeamTarget = null;
+            arrowTeamTarget1 = null;
+            arrowTeamTarget2 = null;
             Target = null;
             TeamTarget[0] = null;
             TeamTarget[1] = null;

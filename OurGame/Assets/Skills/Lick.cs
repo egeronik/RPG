@@ -1,9 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lick : Skills
-{
+public class Lick : Skills {
     public bool Status = false;
 
     public int Damage;
@@ -14,15 +13,12 @@ public class Lick : Skills
     private SkillStats _stats;
     public override SkillStats Stats { get { return _stats; } set { _stats = value; } }
 
-    public override void Activate()
-    {
+    public override void Activate() {
         Status = true;
     }
 
-    void Update()
-    {
-        if (Status)
-        {
+    void Update() {
+        if (Status) {
             T = GetComponent<GameMaster>().Target;
             TeamT = GetComponent<GameMaster>().TeamTarget[0];
 
