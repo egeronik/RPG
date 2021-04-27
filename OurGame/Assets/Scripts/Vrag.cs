@@ -35,7 +35,7 @@ public class Vrag : MonoBehaviour
     }
 
     IEnumerator Hurt1() {
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSeconds(0.5f);
         healthBar.SetHealt(currentHealth);
         if (Person.tag == "Vrag") animator.SetTrigger("HurtEnemy");
         else animator.SetTrigger("HurtTeam");

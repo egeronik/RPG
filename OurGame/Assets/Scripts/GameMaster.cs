@@ -55,20 +55,20 @@ public class GameMaster : MonoBehaviour {
         } else if (Target != null && k == 1 && Input.GetMouseButtonDown(0)) {
             k--;
         }
-
-        if (Target != null && Input.GetKeyDown(KeyCode.H) && turn && PlayerPrefs.GetInt("teamAlive") > 0) {
-            SkillID = 0;
-            CastAttack = true;
+        if (Target != null && turn && PlayerPrefs.GetInt("teamAlive") > 0) {
+            if (Input.GetKeyDown(KeyCode.H)) {
+                SkillID = 0;
+                CastAttack = true;
+            }
+            if (Input.GetKeyDown(KeyCode.J)) {
+                SkillID = 1;
+                CastAttack = true;
+            }
+            if (Input.GetKeyDown(KeyCode.K)) {
+                SkillID = 2;
+                CastSupport = true;
+            }
         }
-        if (Target != null && Input.GetKeyDown(KeyCode.J) && turn && PlayerPrefs.GetInt("teamAlive") > 0) {
-            SkillID = 1;
-            CastAttack = true;
-        }
-        if (Target != null && Input.GetKeyDown(KeyCode.K) && turn && PlayerPrefs.GetInt("teamAlive") > 0) {
-            SkillID = 2;
-            CastSupport = true;
-        }
-
         if (CastAttack) {
             if (Target != null && Target.tag == "Vrag" && TeamTarget[0].tag == "Player") {
                 possibleSkillID = TeamTarget[0].GetComponent<PossibleSkillsID>().possibleSkills;

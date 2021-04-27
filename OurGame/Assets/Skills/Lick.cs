@@ -26,7 +26,7 @@ public class Lick : Skills
             T = GetComponent<GameMaster>().Target;
             TeamT = GetComponent<GameMaster>().TeamTarget[0];
 
-            TeamT.GetComponent<Animator>().SetTrigger("Attack1");
+            TeamT.GetComponent<Animator>().SetTrigger("Attack6");
             T.GetComponent<Vrag>().TakeDamage(Damage);
 
             Status = false;

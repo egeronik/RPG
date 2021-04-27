@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: HeavyAttack
   m_EditorClassIdentifier: 
   name: HeavyAttack
-  artwork: {fileID: 21300040, guid: f2ed27d6c1c3ccc48959bcca269d88f0, type: 3}
+  description: 
+  artwork: {fileID: 1167447168798534649, guid: e2657b16ae9814e4388cbe0e8b9367ee, type: 3}

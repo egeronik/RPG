@@ -136,7 +136,7 @@ GameObject:
   m_Layer: 0
   m_Name: EnemySpawn4
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -258,7 +258,7 @@ GameObject:
   m_Layer: 0
   m_Name: TimSpawn2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -400,7 +400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904788807}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 2.36, z: 0}
+  m_LocalPosition: {x: -0.013, y: 2.373, z: 0}
   m_LocalScale: {x: 2.6060581, y: 2.2507858, z: 10}
   m_Children: []
   m_Father: {fileID: 304871931}
@@ -513,7 +513,7 @@ GameObject:
   m_Layer: 0
   m_Name: EnemySpawn1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -543,7 +543,7 @@ GameObject:
   m_Layer: 0
   m_Name: EnemySpawn3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -943,7 +943,7 @@ GameObject:
   m_Layer: 0
   m_Name: TimSpawn3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -975,6 +975,10 @@ GameObject:
   - component: {fileID: 1471383390}
   - component: {fileID: 1471383389}
   - component: {fileID: 1471383391}
+  - component: {fileID: 1471383392}
+  - component: {fileID: 1471383393}
+  - component: {fileID: 1471383394}
+  - component: {fileID: 1471383395}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -998,6 +1002,10 @@ MonoBehaviour:
   - {fileID: 1471383390}
   - {fileID: 1471383389}
   - {fileID: 1471383391}
+  - {fileID: 1471383392}
+  - {fileID: 1471383393}
+  - {fileID: 1471383394}
+  - {fileID: 1471383395}
   EnemyParty: []
   TeamParty: []
   Target: {fileID: 0}
@@ -1077,6 +1085,66 @@ MonoBehaviour:
   Status: 0
   Damage: -30
   _stats: {fileID: 11400000, guid: c8e242e346430904bba7b15a5ca26290, type: 2}
+--- !u!114 &1471383392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471383385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9eda9d54bea9d24aa32981200be9684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Status: 0
+  Damage: 15
+  _stats: {fileID: 11400000, guid: 6d21159e8386fa243be46116ace92cf2, type: 2}
+--- !u!114 &1471383393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471383385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a0d09ad83ec554690130fcf322420d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Status: 0
+  Damage: 25
+  _stats: {fileID: 11400000, guid: e1e42b4bb115df448a51aeccfa9bc628, type: 2}
+--- !u!114 &1471383394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471383385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b4cacded1a41a543a7711ed9b082fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Status: 0
+  Damage: 45
+  _stats: {fileID: 11400000, guid: a45fdf09441381341ab9955e593361a9, type: 2}
+--- !u!114 &1471383395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471383385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4930b3040e838342b8893d429155c6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Status: 0
+  Damage: 30
+  _stats: {fileID: 11400000, guid: 1769c7fa41a76fa498be4895eba4c231, type: 2}
 --- !u!1 &1598597381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,15 +1176,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyesOnSide: 4
   Team:
-  - {fileID: 1545274940902452039, guid: 0ab171f912045964280e983ab467e1ed, type: 3}
-  - {fileID: 3425025573237175850, guid: 2b39681eaac93074bb7c639858bb181c, type: 3}
-  - {fileID: 1545274940902452039, guid: 0ab171f912045964280e983ab467e1ed, type: 3}
-  - {fileID: 3425025573237175850, guid: 2b39681eaac93074bb7c639858bb181c, type: 3}
+  - {fileID: 1545274940902452039, guid: 1b6c82c01f396bd4690c88e6840ead70, type: 3}
+  - {fileID: 1545274940902452039, guid: 4623ddf44f616624e9896996f720f22e, type: 3}
+  - {fileID: 1545274940902452039, guid: 1b6c82c01f396bd4690c88e6840ead70, type: 3}
+  - {fileID: 1545274940902452039, guid: 4623ddf44f616624e9896996f720f22e, type: 3}
   Enemy:
-  - {fileID: 1900070274916832544, guid: 0c31c4612a5b98940a45040b10576339, type: 3}
-  - {fileID: 4070903811631337427, guid: fe9ad8f9d23a82a48a9fd4e5c56837d3, type: 3}
-  - {fileID: 1900070274916832544, guid: 0c31c4612a5b98940a45040b10576339, type: 3}
-  - {fileID: 4070903811631337427, guid: fe9ad8f9d23a82a48a9fd4e5c56837d3, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  EnemyForest:
+  - {fileID: 8790321937281980594, guid: 859d7f39971df9340b4c152b2e62f228, type: 3}
+  - {fileID: 8790321937281980594, guid: 11b4fc0275c8cd94f96f3f467ebc7329, type: 3}
+  - {fileID: 8790321937281980594, guid: d7a8586be5813f441beac1fa334cda09, type: 3}
+  - {fileID: 8790321937281980594, guid: 859d7f39971df9340b4c152b2e62f228, type: 3}
+  EnemyDesert:
+  - {fileID: 8790321937281980594, guid: 36ce25716c3a4b8479613b9db9c362a4, type: 3}
+  - {fileID: 8790321937281980594, guid: 9689cb08337dc094f8e75b1963489180, type: 3}
+  - {fileID: 8790321937281980594, guid: d67c84ee35719014788bcbcf3122d906, type: 3}
+  - {fileID: 8790321937281980594, guid: 11b4fc0275c8cd94f96f3f467ebc7329, type: 3}
+  EnemySnow:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   SpawnTeam:
   - {fileID: 1759945487}
   - {fileID: 290380874}
@@ -1161,7 +1244,7 @@ GameObject:
   m_Layer: 0
   m_Name: TimSpawn4
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1191,7 +1274,7 @@ GameObject:
   m_Layer: 0
   m_Name: TimSpawn1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1221,7 +1304,7 @@ GameObject:
   m_Layer: 0
   m_Name: EnemySpawn2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
