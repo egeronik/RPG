@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour {
     private int SkillID = 0;
@@ -21,9 +22,16 @@ public class GameMaster : MonoBehaviour {
         EnemyesCount = spawnObject.EnemyesOnSide;
     }
     void Update() {
+        
         if (PlayerPrefs.GetInt("enemiesAlive")==0 && End) {
             Debug.Log("Выиграли");
+            StateDataController.teamHealthIsFull = false;
+            for (int i = 0; i < 4; ++i)
+            {
+                StateDataController.teamHp[i] = spawnObject.Team[i].GetComponent<Vrag>().currentHealth;
+            }
             End = false;
+            SceneManager.LoadScene(0);
         }
 
         if (PlayerPrefs.GetInt("teamAlive") == 0 && End) {

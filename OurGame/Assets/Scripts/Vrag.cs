@@ -11,7 +11,7 @@ public class Vrag : MonoBehaviour
     public GameObject Person;
     public HealthBar healthBar;
     public int ID;
-    void Start()
+    void Awake()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
