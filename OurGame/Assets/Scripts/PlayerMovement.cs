@@ -6,12 +6,14 @@ using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     public Tilemap wrld;
     public Tilemap HighlitionMap;
     public TileBase Higlition;
     public GameObject dialogWindow;
     public float fightChance;
+    public Tilemap[] maps;
+
 
     private Vector3 direction;
     bool hasMoved;
@@ -24,10 +26,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        Vector3 tmp = new Vector3(PlayerPrefs.GetFloat("x"), PlayerPrefs.GetFloat("y"));
-        transform.position = tmp;
+       Vector3 tmp = new Vector3(PlayerPrefs.GetFloat("x"), PlayerPrefs.GetFloat("y"));
+       transform.position = tmp;
     }
 
+    Vector3 nextPosition = new Vector3(0, 0, 0);
     void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
@@ -42,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
 
         GetMovementDirection();
 
+        
+
 
 
         if(next != HighlitionMap.WorldToCell(transform.position + direction))
@@ -49,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
             HighlitionMap.SetTile(next, null);
             next = HighlitionMap.WorldToCell(transform.position + direction);
             HighlitionMap.SetTile(next, Higlition);
+            nextPosition = HighlitionMap.CellToWorld(next);
         }
 
 
@@ -60,9 +66,17 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetButtonDown("Fire1") && !hasMoved)
         {
             hasMoved = true;
-            transform.position += direction;
+            transform.position = nextPosition;
             PlayerPrefs.SetFloat("x", transform.position.x);
             PlayerPrefs.SetFloat("y", transform.position.y);
+            foreach(Tilemap mp in maps)
+            {
+                
+                if (mp.GetTile(mp.WorldToCell(transform.position + direction)) != null)
+                {
+                    PlayerPrefs.SetString("Biome", mp.name);
+                }
+            }
             if (Random.Range(0, 100) < fightChance)
             {
                 dialogWindow.SetActive(true);
@@ -80,19 +94,19 @@ public class PlayerMovement : MonoBehaviour
         Vector3 mouse = Input.mousePosition;
         mouse = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().ScreenToWorldPoint(mouse) - transform.position;
         mouse.z = 0;
-        //Debug.Log(mouse);
+      
 
-      //  transform.position = mouse;
+      
       
         if (mouse.x *32/100 < 0)
         {
             if (mouse.y > 1f*23/100)
             {
-                direction = new Vector3(-X, Y);
+                direction = new Vector3(-X/2, Y);
             }
             else if (mouse.y < -1f * 23 / 100)
             {
-                direction = new Vector3(-X, -Y);
+                direction = new Vector3(-X/2, -Y);
             }
             else
             {
@@ -104,11 +118,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (mouse.y > 1f*23/100)
             {
-                direction = new Vector3(X , Y);
+                direction = new Vector3(X/2 , Y);
             }
             else if (mouse.y < -1f * 23 / 100)
             {
-                direction = new Vector3(X , -Y);
+                direction = new Vector3(X/2 , -Y);
             }
             else
             {

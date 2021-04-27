@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FightStarter : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class FightStarter : MonoBehaviour
 
     public void startFight()
     {
-        Debug.Log("KEK");
-        //SceneManager.LoadScene("OtherSceneName"); Добавить сдесь сцену
+        dialogWindow.SetActive(false);
+        StateDataController.dialogWindowAlive = false;
+
+        SceneManager.LoadScene(1); 
     }
 
     public void tryToEscape()
