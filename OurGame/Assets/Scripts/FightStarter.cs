@@ -8,11 +8,11 @@ public class FightStarter : MonoBehaviour
    
     public float evadeChance = 10;
     public GameObject dialogWindow;
-
+    public GameObject constationWidnow;
 
     public void startFight()
     {
-        dialogWindow.SetActive(false);
+        constationWidnow.SetActive(false);
         StateDataController.dialogWindowAlive = false;
 
         SceneManager.LoadScene(1); 
@@ -22,15 +22,17 @@ public class FightStarter : MonoBehaviour
     {
         if (Random.Range(0, 100) > evadeChance)
         {
-            startFight();
             for (int i = 0; i < StateDataController.teamHP.Length; ++i)
             {
                 StateDataController.teamHP[i] *= 9 / 10;
             }
+            dialogWindow.SetActive(false);
+            constationWidnow.SetActive(true);
         }
         else
         {
             dialogWindow.SetActive(false);
+            
             StateDataController.dialogWindowAlive = false;
         }
     }

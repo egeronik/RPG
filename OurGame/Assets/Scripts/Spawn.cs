@@ -8,12 +8,17 @@ public class Spawn : MonoBehaviour
     public int EnemyesOnSide = 4;
     public GameObject[] Team;
     public GameObject[] Enemy;
+    public GameObject[] EnemyForest;
+    public GameObject[] EnemyDesert;
+    public GameObject[] EnemySnow;
     public GameObject[] SpawnTeam;
     public GameObject[] SpawnEnemy;
     bool[] EnemiesUsed = new bool[4];
     bool[] AlliesUsed = new bool [4];
-
+    string Biome;
     void Start() {
+        Biome = PlayerPrefs.GetString("Biome");
+        Biome = "Forest";
         PlayerPrefs.SetInt("enemiesAlive", 0);
         PlayerPrefs.SetInt("teamAlive", 0);
         int value;
@@ -23,9 +28,29 @@ public class Spawn : MonoBehaviour
             while (AlliesUsed[value]) {
                 value = Random.Range(0, 4);
             }
-            Team[i] = Instantiate(Team[i], SpawnTeam[value].transform.position, SpawnTeam[value].transform.rotation);
+            Vector3 vec = SpawnTeam[value].transform.position;
+            vec.y += Team[i].GetComponent<BoxCollider2D>().size.y / 2;
+            Team[i] = Instantiate(Team[i], vec, SpawnTeam[value].transform.rotation);
             PlayerPrefs.SetInt("teamAlive", PlayerPrefs.GetInt("teamAlive") + 1);
             AlliesUsed[value] = true;
+        }
+
+        if (Biome == "Forest") {
+            for (int i = 0; i < EnemyesOnSide; i++) {
+                Enemy[i] = EnemyForest[Random.Range(0, 4)];
+            }
+        }
+
+        if (Biome == "Desert") {
+            for (int i = 0; i < EnemyesOnSide; i++) {
+                Enemy[i] = EnemyDesert[Random.Range(0, 4)];
+            }
+        }
+
+        if (Biome == "Snow") {
+            for (int i = 0; i < EnemyesOnSide; i++) {
+                Enemy[i] = EnemySnow[Random.Range(0, 4)];
+            }
         }
 
         for (int i = 0; i < Enemy.Length; i++) {
@@ -33,7 +58,9 @@ public class Spawn : MonoBehaviour
             while (EnemiesUsed[value]) {
                 value = Random.Range(0, EnemyesOnSide);
             }
-            Enemy[i] = Instantiate(Enemy[i], SpawnEnemy[value].transform.position, SpawnEnemy[value].transform.rotation);
+            Vector3 vec = SpawnEnemy[value].transform.position;
+            vec.y += Enemy[i].GetComponent<BoxCollider2D>().size.y / 2;
+            Enemy[i] = Instantiate(Enemy[i], vec, SpawnEnemy[value].transform.rotation);
             PlayerPrefs.SetInt("enemiesAlive", PlayerPrefs.GetInt("enemiesAlive") + 1);
             EnemiesUsed[value] = true;
         }

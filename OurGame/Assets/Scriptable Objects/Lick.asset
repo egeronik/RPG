@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341c16879efe73c4abd1d19f942d84fb, type: 3}
   m_Name: Lick
   m_EditorClassIdentifier: 
-  name: 
+  name: Lick
   description: 
   artwork: {fileID: 0}
