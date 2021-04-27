@@ -33,6 +33,10 @@ public class GameMaster : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0)) {
             Target = GetComponent<MouseTrack>().chelic;
+            if (Target.tag == "Vrag" && TeamTarget[0] == null) {
+                Target = null;
+                return;
+            }
         }
         if (Target != null && k == 0 && Target.tag == "Player" && Input.GetMouseButtonDown(0) && !Target.GetComponent<Vrag>().died) {
             k++;
@@ -40,7 +44,7 @@ public class GameMaster : MonoBehaviour {
             if (Target != TeamTarget[0]) {
                 tmpTarget.SetActive(!tmpTarget.activeSelf);
             }
-            if (TeamTarget[0] != null && TeamTarget[0].gameObject != Target.gameObject) {
+            if (tmpTeamTarget!= null && TeamTarget[0] != null && TeamTarget[0].gameObject != Target.gameObject) {
                 tmpTeamTarget.SetActive(!tmpTeamTarget.activeSelf);
             }
             TeamTarget[0] = Target;
@@ -52,22 +56,22 @@ public class GameMaster : MonoBehaviour {
             k--;
         }
 
-        if (Input.GetKeyDown(KeyCode.H) && turn && PlayerPrefs.GetInt("teamAlive") > 0) {
+        if (Target != null && Input.GetKeyDown(KeyCode.H) && turn && PlayerPrefs.GetInt("teamAlive") > 0) {
             SkillID = 0;
             CastAttack = true;
         }
-        if (Input.GetKeyDown(KeyCode.J) && turn && PlayerPrefs.GetInt("teamAlive") > 0) {
+        if (Target != null && Input.GetKeyDown(KeyCode.J) && turn && PlayerPrefs.GetInt("teamAlive") > 0) {
             SkillID = 1;
             CastAttack = true;
         }
-        if (Input.GetKeyDown(KeyCode.K) && turn && PlayerPrefs.GetInt("teamAlive") > 0) {
+        if (Target != null && Input.GetKeyDown(KeyCode.K) && turn && PlayerPrefs.GetInt("teamAlive") > 0) {
             SkillID = 2;
             CastSupport = true;
         }
 
         if (CastAttack) {
-            possibleSkillID = TeamTarget[0].GetComponent<PossibleSkillsID>().possibleSkills;
-            if (Target != null && Target.tag == "Vrag") {
+            if (Target != null && Target.tag == "Vrag" && TeamTarget[0].tag == "Player") {
+                possibleSkillID = TeamTarget[0].GetComponent<PossibleSkillsID>().possibleSkills;
                 for (int i = 0; i < possibleSkillID.Length; i++) {
                     if (SkillID == possibleSkillID[i]) {
                         Skills[SkillID].Activate();                      
@@ -77,33 +81,43 @@ public class GameMaster : MonoBehaviour {
                     }
                 }
                 CastAttack = false;             
-            }       
-        } else {
-            CastAttack = false;
+            } else CastAttack = false;
         }
         if (CastSupport) {
-            possibleSkillID = TeamTarget[0].GetComponent<PossibleSkillsID>().possibleSkills;
             if (Target != null && Target.tag == "Player") {
+                possibleSkillID = TeamTarget[0].GetComponent<PossibleSkillsID>().possibleSkills;
                 for (int i = 0; i < possibleSkillID.Length; i++) {
                     if (SkillID == possibleSkillID[i]) {
+                        if (TeamTarget[1] == null) TeamTarget[1] = TeamTarget[0];
                         Skills[SkillID].Activate();
                         CastSupport = false;
                         turn = false;
+                        if (tmpTeamTarget != null && TeamTarget[0] != null && TeamTarget[0].gameObject == TeamTarget[1].gameObject) {
+                            tmpTeamTarget.SetActive(!tmpTeamTarget.activeSelf);
+                        }
                         return;
                     }
                 }
                 CastSupport = false;
+            } else { 
+                CastSupport = false; 
             }
-        } else {
-            CastSupport = false;
         }
 
-       if (!turn) {        
+       if (!turn) {
+            if(TeamTarget[0] != null) tmpTeamTarget = TeamTarget[0].transform.Find("Skills").gameObject;
+            if(TeamTarget[0].gameObject != Target.gameObject) tmpTeamTarget.SetActive(!tmpTeamTarget.activeSelf);
+            tmpTeamTarget = null;
+            Target = null;
+            TeamTarget[0] = null;
+            TeamTarget[1] = null;
             EnemyParty = spawnObject.Enemy;
             TeamParty = spawnObject.Team;
             if (PlayerPrefs.GetInt("enemiesAlive") > 0) {
                 StartCoroutine(EnemyTurn(findEnemyToMove()));
             }
+            Target = null;
+            TeamTarget[0] = null;
             turn = true;
         }
     }
