@@ -33,6 +33,7 @@ public class GameMaster : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0)) {
             Target = GetComponent<MouseTrack>().chelic;
+            if (Target == null) return;
             if (Target.tag == "Vrag" && TeamTarget[0] == null) {
                 Target = null;
                 return;

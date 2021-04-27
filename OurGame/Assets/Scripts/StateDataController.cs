@@ -8,5 +8,7 @@ public class StateDataController : MonoBehaviour
     public static bool dialogWindowAlive = false;
     public static float playerX = 7.362f;
     public static float playerY = 0f;
+    public static bool isFirstStart = true;
+    public static string Biome = "Forest";
 
 }

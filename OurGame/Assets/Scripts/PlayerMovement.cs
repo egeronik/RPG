@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        if (StateDataController.isFirstStart) return;
+
        Vector3 tmp = new Vector3(StateDataController.playerX, StateDataController.playerY);
        transform.position = tmp;
     }
@@ -74,7 +76,8 @@ public class PlayerMovement : MonoBehaviour
                 
                 if (mp.GetTile(mp.WorldToCell(transform.position + direction)) != null)
                 {
-                    PlayerPrefs.SetString("Biome", mp.name);
+                    StateDataController.Biome = mp.name;
+                    
                 }
             }
             if (Random.Range(0, 100) < fightChance)

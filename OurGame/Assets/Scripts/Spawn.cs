@@ -16,7 +16,8 @@ public class Spawn : MonoBehaviour
     bool[] AlliesUsed = new bool [4];
     string Biome;
     void Start() {
-        Biome = PlayerPrefs.GetString("Biome");
+        Biome = StateDataController.Biome;
+        Debug.Log(Biome);
         PlayerPrefs.SetInt("enemiesAlive", 0);
         PlayerPrefs.SetInt("teamAlive", 0);
         int value;
