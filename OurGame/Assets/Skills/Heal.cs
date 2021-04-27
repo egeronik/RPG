@@ -28,7 +28,7 @@ public class Heal : Skills
 
             TeamT.GetComponent<Animator>().SetTrigger("Heal");
             T.GetComponent<Vrag>().TakeDamage(Damage);
-
+            if (T.GetComponent<Vrag>().currentHealth > 100) T.GetComponent<Vrag>().currentHealth = 100;
             Status = false;
         }
     }
