@@ -34,7 +34,7 @@ public class GameMaster : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             Target = GetComponent<MouseTrack>().chelic;
         }
-        if (Target != null && k == 0 && Target.tag == "Player" && Input.GetMouseButtonDown(0)) {
+        if (Target != null && k == 0 && Target.tag == "Player" && Input.GetMouseButtonDown(0) && !Target.GetComponent<Vrag>().died) {
             k++;
             tmpTarget = Target.transform.Find("Skills").gameObject;
             if (Target != TeamTarget[0]) {

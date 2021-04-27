@@ -37,13 +37,16 @@ public class Vrag : MonoBehaviour
     IEnumerator Hurt1() {
         yield return new WaitForSeconds(0.45f);
         healthBar.SetHealt(currentHealth);
-        animator.SetTrigger("HurtEnemy");
+        if (Person.tag == "Vrag") animator.SetTrigger("HurtEnemy");
+        else animator.SetTrigger("HurtTeam");
     }
 
     IEnumerator Hurt2() {
         yield return new WaitForSeconds(0.9f);
         healthBar.SetHealt(currentHealth);
         animator.SetTrigger("HurtEnemy");
+        if (Person.tag == "Vrag") animator.SetTrigger("HurtEnemy");
+        else animator.SetTrigger("HurtTeam");
     }
 
     IEnumerator Heal() {
@@ -53,9 +56,12 @@ public class Vrag : MonoBehaviour
     }
 
     void Die() {
-        animator.SetBool("IsDead", true);
         died = true;
-        if (Person.tag == "Vrag") PlayerPrefs.SetInt("enemiesAlive", PlayerPrefs.GetInt("enemiesAlive") - 1);
-        else PlayerPrefs.SetInt("teamAlive", PlayerPrefs.GetInt("teamAlive") - 1);
+        animator.SetBool("IsDead", true);
+        if (Person.tag == "Vrag") {
+            PlayerPrefs.SetInt("enemiesAlive", PlayerPrefs.GetInt("enemiesAlive") - 1);
+        } else {
+            PlayerPrefs.SetInt("teamAlive", PlayerPrefs.GetInt("teamAlive") - 1);
+        }
     }
 }
