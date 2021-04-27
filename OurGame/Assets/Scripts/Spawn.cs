@@ -10,7 +10,6 @@ public class Spawn : MonoBehaviour
     public GameObject[] Enemy;
     public GameObject[] EnemyForest;
     public GameObject[] EnemyDesert;
-    public GameObject[] EnemySnow;
     public GameObject[] SpawnTeam;
     public GameObject[] SpawnEnemy;
     bool[] EnemiesUsed = new bool[4];
@@ -18,7 +17,6 @@ public class Spawn : MonoBehaviour
     string Biome;
     void Start() {
         Biome = PlayerPrefs.GetString("Biome");
-        Biome = "Forest";
         PlayerPrefs.SetInt("enemiesAlive", 0);
         PlayerPrefs.SetInt("teamAlive", 0);
         int value;
@@ -44,12 +42,6 @@ public class Spawn : MonoBehaviour
         if (Biome == "Desert") {
             for (int i = 0; i < EnemyesOnSide; i++) {
                 Enemy[i] = EnemyDesert[Random.Range(0, 4)];
-            }
-        }
-
-        if (Biome == "Snow") {
-            for (int i = 0; i < EnemyesOnSide; i++) {
-                Enemy[i] = EnemySnow[Random.Range(0, 4)];
             }
         }
 

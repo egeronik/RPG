@@ -979,6 +979,7 @@ GameObject:
   - component: {fileID: 1471383393}
   - component: {fileID: 1471383394}
   - component: {fileID: 1471383395}
+  - component: {fileID: 1471383396}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1006,6 +1007,7 @@ MonoBehaviour:
   - {fileID: 1471383393}
   - {fileID: 1471383394}
   - {fileID: 1471383395}
+  - {fileID: 1471383396}
   EnemyParty: []
   TeamParty: []
   Target: {fileID: 0}
@@ -1145,6 +1147,21 @@ MonoBehaviour:
   Status: 0
   Damage: 30
   _stats: {fileID: 11400000, guid: 1769c7fa41a76fa498be4895eba4c231, type: 2}
+--- !u!114 &1471383396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471383385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eae83220314186e4d9d87043e70b17ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Status: 0
+  Damage: 20
+  _stats: {fileID: 11400000, guid: cf3f1b2d24a93f3488e861de8fe1fc98, type: 2}
 --- !u!1 &1598597381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,8 +1195,8 @@ MonoBehaviour:
   Team:
   - {fileID: 1545274940902452039, guid: 1b6c82c01f396bd4690c88e6840ead70, type: 3}
   - {fileID: 1545274940902452039, guid: 4623ddf44f616624e9896996f720f22e, type: 3}
-  - {fileID: 1545274940902452039, guid: 1b6c82c01f396bd4690c88e6840ead70, type: 3}
-  - {fileID: 1545274940902452039, guid: 4623ddf44f616624e9896996f720f22e, type: 3}
+  - {fileID: 1545274940902452039, guid: a9bce2459dacf0943a8b3596cf378bb8, type: 3}
+  - {fileID: 1545274940902452039, guid: 1b61e95079d8300449e31fdd41ee7763, type: 3}
   Enemy:
   - {fileID: 0}
   - {fileID: 0}
@@ -1195,11 +1212,6 @@ MonoBehaviour:
   - {fileID: 8790321937281980594, guid: 9689cb08337dc094f8e75b1963489180, type: 3}
   - {fileID: 8790321937281980594, guid: d67c84ee35719014788bcbcf3122d906, type: 3}
   - {fileID: 8790321937281980594, guid: 11b4fc0275c8cd94f96f3f467ebc7329, type: 3}
-  EnemySnow:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   SpawnTeam:
   - {fileID: 1759945487}
   - {fileID: 290380874}

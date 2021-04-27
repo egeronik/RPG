@@ -165,6 +165,7 @@ MonoBehaviour:
   currentHealth: 0
   Person: {fileID: 1545274940902452039}
   healthBar: {fileID: 5931356592208710512}
+  ID: 2
 --- !u!1 &2024062375948737235
 GameObject:
   m_ObjectHideFlags: 0

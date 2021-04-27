@@ -54,21 +54,28 @@ public class GameMaster : MonoBehaviour {
             k--;
         } else if (Target != null && k == 1 && Input.GetMouseButtonDown(0)) {
             k--;
-        }
+        }       
         if (Target != null && turn && PlayerPrefs.GetInt("teamAlive") > 0) {
             if (Input.GetKeyDown(KeyCode.H)) {
                 SkillID = 0;
                 CastAttack = true;
             }
             if (Input.GetKeyDown(KeyCode.J)) {
-                SkillID = 1;
-                CastAttack = true;
-            }
-            if (Input.GetKeyDown(KeyCode.K)) {
-                SkillID = 2;
-                CastSupport = true;
+                if (TeamTarget[0].GetComponent<Vrag>().ID == 1) {
+                    SkillID = 2;
+                    CastSupport = true;
+                } else
+                if (TeamTarget[0].GetComponent<Vrag>().ID == 2) {
+                    SkillID = 1;
+                    CastAttack = true;
+                } else
+                if (TeamTarget[0].GetComponent<Vrag>().ID == 3) {
+                    SkillID = 7;
+                    CastAttack = true;
+                }
             }
         }
+
         if (CastAttack) {
             if (Target != null && Target.tag == "Vrag" && TeamTarget[0].tag == "Player") {
                 possibleSkillID = TeamTarget[0].GetComponent<PossibleSkillsID>().possibleSkills;
@@ -77,6 +84,10 @@ public class GameMaster : MonoBehaviour {
                         Skills[SkillID].Activate();                      
                         CastAttack = false;
                         turn = false;
+                        if(Random.Range(0,101)>95) {
+                            Debug.Log("У деда инсульт");
+                            spawnObject.Team[3].GetComponent<Vrag>().TakeDamage(999);
+                        }
                         return;
                     }
                 }
@@ -94,6 +105,10 @@ public class GameMaster : MonoBehaviour {
                         turn = false;
                         if (tmpTeamTarget != null && TeamTarget[0] != null && TeamTarget[0].gameObject == TeamTarget[1].gameObject) {
                             tmpTeamTarget.SetActive(!tmpTeamTarget.activeSelf);
+                        }
+                        if (Random.Range(0, 101) > 95) {
+                            Debug.Log("У деда инсульт");
+                            spawnObject.Team[3].GetComponent<Vrag>().TakeDamage(999);
                         }
                         return;
                     }

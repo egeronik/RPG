@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kick : Skills
+public class DoubleAttack : Skills
 {
     public bool Status = false;
 
@@ -26,10 +26,15 @@ public class Kick : Skills
             T = GetComponent<GameMaster>().Target;
             TeamT = GetComponent<GameMaster>().TeamTarget[0];
 
-            TeamT.GetComponent<Animator>().SetTrigger("Attack1");
+            TeamT.GetComponent<Animator>().SetTrigger("Attack7");
             T.GetComponent<Vrag>().TakeDamage(Damage);
-
+            StartCoroutine(DoubleAttackWait());
             Status = false;
         }
+    }
+    IEnumerator DoubleAttackWait() {
+        yield return new WaitForSeconds(0.5f);
+        TeamT.GetComponent<Animator>().SetTrigger("Attack7");
+        T.GetComponent<Vrag>().TakeDamage(Damage);
     }
 }

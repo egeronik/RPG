@@ -530,7 +530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   died: 0
   animator: {fileID: 6384792476502117159}
-  maxHealth: 90
+  maxHealth: 80
   currentHealth: 0
   Person: {fileID: 8790321937281980594}
   healthBar: {fileID: 5381580839019782348}

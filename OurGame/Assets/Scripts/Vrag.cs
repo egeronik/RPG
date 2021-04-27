@@ -10,6 +10,7 @@ public class Vrag : MonoBehaviour
     public int currentHealth;
     public GameObject Person;
     public HealthBar healthBar;
+    public int ID;
     void Start()
     {
         currentHealth = maxHealth;
@@ -44,7 +45,6 @@ public class Vrag : MonoBehaviour
     IEnumerator Hurt2() {
         yield return new WaitForSeconds(0.9f);
         healthBar.SetHealt(currentHealth);
-        animator.SetTrigger("HurtEnemy");
         if (Person.tag == "Vrag") animator.SetTrigger("HurtEnemy");
         else animator.SetTrigger("HurtTeam");
     }
