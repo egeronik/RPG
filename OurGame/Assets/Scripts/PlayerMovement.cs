@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-       Vector3 tmp = new Vector3(PlayerPrefs.GetFloat("x"), PlayerPrefs.GetFloat("y"));
+       Vector3 tmp = new Vector3(StateDataController.playerX, StateDataController.playerY);
        transform.position = tmp;
     }
 
@@ -67,9 +67,9 @@ public class PlayerMovement : MonoBehaviour
         {
             hasMoved = true;
             transform.position = nextPosition;
-            PlayerPrefs.SetFloat("x", transform.position.x);
-            PlayerPrefs.SetFloat("y", transform.position.y);
-            foreach(Tilemap mp in maps)
+            StateDataController.playerX = transform.position.x;
+            StateDataController.playerY = transform.position.y;
+            foreach (Tilemap mp in maps)
             {
                 
                 if (mp.GetTile(mp.WorldToCell(transform.position + direction)) != null)
