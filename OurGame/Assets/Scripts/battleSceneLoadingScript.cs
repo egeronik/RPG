@@ -11,11 +11,11 @@ public class battleSceneLoadingScript : MonoBehaviour
     
     public void loadMenuScene()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
     
     public void loadMapScene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
