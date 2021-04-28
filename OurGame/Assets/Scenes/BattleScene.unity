@@ -600,7 +600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &904788808
 Transform:
   m_ObjectHideFlags: 0
@@ -1356,7 +1356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Status: 0
   Damage: 15
-  _stats: {fileID: 11400000, guid: 1769c7fa41a76fa498be4895eba4c231, type: 2}
+  _stats: {fileID: 0}
 --- !u!114 &1471383396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1447,6 +1447,8 @@ MonoBehaviour:
   - {fileID: 1875274790}
   - {fileID: 1024223509}
   - {fileID: 229931490}
+  desertBG: {fileID: 1171535385}
+  forestBG: {fileID: 904788807}
 --- !u!4 &1598597383
 Transform:
   m_ObjectHideFlags: 0

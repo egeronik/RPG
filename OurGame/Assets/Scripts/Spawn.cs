@@ -12,6 +12,8 @@ public class Spawn : MonoBehaviour
     public GameObject[] EnemyDesert;
     public GameObject[] SpawnTeam;
     public GameObject[] SpawnEnemy;
+    public GameObject desertBG;
+    public GameObject forestBG;
     bool[] EnemiesUsed = new bool[4];
     bool[] AlliesUsed = new bool [4];
     string Biome;
@@ -19,6 +21,10 @@ public class Spawn : MonoBehaviour
         Biome = StateDataController.Biome;
         PlayerPrefs.SetInt("enemiesAlive", 0);
         PlayerPrefs.SetInt("teamAlive", 0);
+        
+
+
+        //Ниже код говна
         int value;
 
         for (int i = 0; i < Team.Length; i++) {
@@ -48,10 +54,17 @@ public class Spawn : MonoBehaviour
 
 
         if (Biome == "Forest") {
+            //Начало нормального кода
+            forestBG.SetActive(true);
+            //Конец нормального кода
             for (int i = 0; i < EnemyesOnSide; i++) {
                 Enemy[i] = EnemyForest[Random.Range(0, 4)];
             }
+
         } else if (Biome == "Desert") {
+            //Начало нормального кода
+            desertBG.SetActive(true);
+            //Конец нормального кода
             for (int i = 0; i < EnemyesOnSide; i++) {
                 Enemy[i] = EnemyDesert[Random.Range(0, 4)];
             }
