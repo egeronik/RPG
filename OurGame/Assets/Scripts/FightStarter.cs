@@ -15,7 +15,7 @@ public class FightStarter : MonoBehaviour
         constationWidnow.SetActive(false);
         StateDataController.dialogWindowAlive = false;
 
-        SceneManager.LoadScene(1); 
+        SceneManager.LoadScene(2); 
     }
 
     public void tryToEscape()

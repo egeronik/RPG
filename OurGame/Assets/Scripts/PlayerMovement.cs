@@ -26,7 +26,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        if (StateDataController.isFirstStart) return;
+        if (StateDataController.isFirstStart)
+        {
+            StateDataController.isFirstStart = false;
+            return;
+        }
 
        Vector3 tmp = new Vector3(StateDataController.playerX, StateDataController.playerY);
        transform.position = tmp;

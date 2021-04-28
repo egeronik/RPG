@@ -33,7 +33,7 @@ public class GameMaster : MonoBehaviour {
             StateDataController.teamHealthIsFull = false;
             for (int i = 0; i < 4; ++i)
             {
-                StateDataController.teamHp[i] = spawnObject.Team[i].GetComponent<Vrag>().currentHealth;
+                StateDataController.teamHp[i] = spawnObject.Team[i].GetComponent<Vrag>().currentHealth+10;
             }
             End = false;
             StateDataController.battleDialogWindowIsActive = true;
