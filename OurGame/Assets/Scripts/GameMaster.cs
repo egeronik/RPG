@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour {
     private int SkillID = 0;
+    public GameObject winWindow;
+    public GameObject loseWindow;
     public List<Skills> Skills;
     int[] possibleSkillID;
     private bool turn = true;
@@ -20,9 +22,12 @@ public class GameMaster : MonoBehaviour {
     bool End = true;
     void Start() {
         EnemyesCount = spawnObject.EnemyesOnSide;
+        StateDataController.battleDialogWindowIsActive = false;
     }
     void Update() {
-        
+        if (StateDataController.battleDialogWindowIsActive)
+            return;
+
         if (PlayerPrefs.GetInt("enemiesAlive")==0 && End) {
             Debug.Log("Выиграли");
             StateDataController.teamHealthIsFull = false;
@@ -31,12 +36,16 @@ public class GameMaster : MonoBehaviour {
                 StateDataController.teamHp[i] = spawnObject.Team[i].GetComponent<Vrag>().currentHealth;
             }
             End = false;
-            SceneManager.LoadScene(0);
+            StateDataController.battleDialogWindowIsActive = true;
+            winWindow.SetActive(true);
         }
+
 
         if (PlayerPrefs.GetInt("teamAlive") == 0 && End) {
             Debug.Log("Проиграли");
             End = false;
+            StateDataController.battleDialogWindowIsActive = true;
+            loseWindow.SetActive(true);
         }
 
         if (Input.GetMouseButtonDown(0)) {
