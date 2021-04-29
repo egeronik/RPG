@@ -8,9 +8,10 @@ public class soundControler : MonoBehaviour
     public AudioSource middle;
     // Start is called before the first frame update
 
-    private void Start()
+    void Start()
     {
-        
+        start.volume = PlayerPrefs.GetFloat("volume");
+        middle.volume = PlayerPrefs.GetFloat("volume");
     }
 
 
@@ -19,7 +20,6 @@ public class soundControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (!start.isPlaying&&!midPlaying)
         {
             middle.Play();

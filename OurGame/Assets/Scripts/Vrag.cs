@@ -32,6 +32,7 @@ public class Vrag : MonoBehaviour
         }
         if (currentHealth <= 0) {
             Die();
+            currentHealth = 0;
         }
     }
 
